@@ -1,21 +1,25 @@
 .movie-card {
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  background-color: #fff;
-  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  background-color: var(--card-bg);
+  margin-bottom: 25px;
+  position: relative;
+  isolation: isolate;
 }
 
 .movie-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .movie-card a {
   text-decoration: none;
   color: inherit;
+  display: block;
+  height: 100%;
 }
 
 .movie-poster {
@@ -25,6 +29,23 @@
   overflow: hidden;
 }
 
+.movie-poster:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.movie-card:hover .movie-poster:before {
+  opacity: 1;
+}
+
 .movie-poster img {
   position: absolute;
   top: 0;
@@ -32,44 +53,110 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-normal);
 }
 
 .movie-card:hover .movie-poster img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .movie-rating {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 0.9rem;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform var(--transition-normal);
+}
+
+.movie-card:hover .movie-rating {
+  transform: scale(1.1);
+  background-color: var(--primary-color);
+}
+
+/* Add color coding to ratings */
+.movie-rating.high {
+  background-color: rgba(82, 196, 26, 0.8);
+}
+
+.movie-rating.medium {
+  background-color: rgba(250, 173, 20, 0.8);
+}
+
+.movie-rating.low {
+  background-color: rgba(245, 34, 45, 0.8);
 }
 
 .movie-info {
-  padding: 12px;
+  padding: 16px;
 }
 
 .movie-title {
   margin: 0 0 5px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-dark);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  letter-spacing: 0.3px;
+  transition: color var(--transition-normal);
+}
+
+.movie-card:hover .movie-title {
+  color: var(--primary-color);
 }
 
 .movie-year {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-light);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.movie-year:before {
+  content: '📅';
+  margin-right: 5px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Add a shine effect on hover */
+.movie-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  z-index: 1;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.movie-card:hover::after {
+  transform: rotate(30deg) translateX(100%);
+  opacity: 1;
 }
