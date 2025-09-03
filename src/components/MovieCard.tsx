@@ -11,6 +11,13 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
   
+  // Get rating class based on vote average
+  const getRatingClass = (rating: number): string => {
+    if (rating >= 7) return 'high';
+    if (rating >= 5) return 'medium';
+    return 'low';
+  };
+  
   return (
     <div className="movie-card">
       <Link to={`/movie/${movie.id}`}>
@@ -18,8 +25,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           <img 
             src={getImageUrl(movie.poster_path, posterSizes.medium)} 
             alt={`${movie.title} poster`} 
+            loading="lazy"
           />
-          <div className="movie-rating">
+          <div className={`movie-rating ${getRatingClass(movie.vote_average)}`}>
             <span>{movie.vote_average.toFixed(1)}</span>
           </div>
         </div>
