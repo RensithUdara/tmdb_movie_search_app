@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -37,13 +38,58 @@ const Home: React.FC = () => {
     navigate(`/search?query=${encodeURIComponent(query)}`);
   };
 
+  const handleCategoryClick = (category: string) => {
+    setActiveCategory(category);
+    // Here you could filter movies based on category or fetch new data
+  };
+
   return (
     <div className="home-page">
       <div className="hero-section">
+        {/* Decorative elements */}
+        <div className="hero-decoration decoration-1"></div>
+        <div className="hero-decoration decoration-2"></div>
+        
         <div className="hero-content">
-          <h1>Discover Movies</h1>
-          <p>Search for your favorite movies and discover new ones</p>
+          <h1>Discover Amazing Movies</h1>
+          <p>
+            Explore thousands of movies, from blockbuster hits to indie gems.
+            Find what to watch next with our curated collections.
+          </p>
           <SearchBar onSearch={handleSearch} />
+        </div>
+      </div>
+      
+      <div className="featured-categories">
+        <div 
+          className={`category-pill ${activeCategory === 'all' ? 'active' : ''}`} 
+          onClick={() => handleCategoryClick('all')}
+        >
+          All
+        </div>
+        <div 
+          className={`category-pill ${activeCategory === 'action' ? 'active' : ''}`} 
+          onClick={() => handleCategoryClick('action')}
+        >
+          Action
+        </div>
+        <div 
+          className={`category-pill ${activeCategory === 'comedy' ? 'active' : ''}`} 
+          onClick={() => handleCategoryClick('comedy')}
+        >
+          Comedy
+        </div>
+        <div 
+          className={`category-pill ${activeCategory === 'drama' ? 'active' : ''}`} 
+          onClick={() => handleCategoryClick('drama')}
+        >
+          Drama
+        </div>
+        <div 
+          className={`category-pill ${activeCategory === 'sci-fi' ? 'active' : ''}`} 
+          onClick={() => handleCategoryClick('sci-fi')}
+        >
+          Sci-Fi
         </div>
       </div>
 
@@ -52,6 +98,7 @@ const Home: React.FC = () => {
           movies={trendingMovies} 
           title="Trending This Week" 
           loading={loading}
+          scrollable={true}
         />
         
         <MovieList 
