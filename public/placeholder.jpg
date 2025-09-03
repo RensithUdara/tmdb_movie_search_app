@@ -1,0 +1,9 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750" viewBox="0 0 500 750">
+  <rect width="500" height="750" fill="#e0e0e0" />
+  <text x="250" y="375" font-family="Arial" font-size="32" text-anchor="middle" fill="#888">
+    No Image Available
+  </text>
+  <path d="M250,250 L200,200 L300,200 Z" fill="#888" />
+  <rect x="200" y="300" width="100" height="75" fill="#888" />
+</svg>
