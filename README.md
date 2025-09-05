@@ -1,43 +1,104 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TMDB Movie Search App
 
-## Available Scripts
+A modern, mobile-friendly web application built with React and TypeScript for searching, browsing, and viewing details of movies using the TMDB API.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Search Movies:** Find movies by title using the TMDB API.
+- **Trending & Popular:** Browse trending and popular movies.
+- **Movie Details:** View detailed information, genres, ratings, and more for each movie.
+- **Responsive Design:** Optimized for mobile and desktop devices.
+- **Modern UI:** Beautiful, animated, and interactive user interface.
+- **Category Pills:** Quickly filter movies by genre (UI only, can be extended).
+- **Color-coded Ratings:** Visual feedback for movie ratings.
+- **Page Transitions & Animations:** Smooth navigation and engaging micro-interactions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Home Page](screenshots/home.png)
+![Search Results](screenshots/search.png)
+![Movie Details](screenshots/details.png)
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (v16 or newer recommended)
+- npm (comes with Node.js)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+	```sh
+	git clone https://github.com/RensithUdara/tmdb_movie_search_app.git
+	cd tmdb_movie_search_app
+	```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies:**
+	```sh
+	npm install
+	```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server:**
+	```sh
+	npm start
+	```
+	The app will open at [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Use the search bar to find movies by title.
+- Browse trending and popular movies on the home page.
+- Click any movie card to view detailed information.
+- Use navigation links to switch between Home, Search, and Popular pages.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+  components/      # Reusable UI components (Header, MovieCard, MovieList, SearchBar)
+  pages/           # Main pages (Home, Search, MovieDetails, Popular)
+  services/        # API service for TMDB
+  types/           # TypeScript types for movie data
+  App.tsx          # Main app component with routing
+  index.tsx        # Entry point
+public/
+  placeholder.jpg  # Placeholder image for missing posters
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Configuration
+
+- The TMDB API key is set in `src/services/movieService.ts`.
+- You can get your own API key from [TMDB](https://www.themoviedb.org/settings/api).
+
+## Customization
+
+- **Genres:** Category pills are UI only; you can extend them to filter movies by genre using TMDB endpoints.
+- **Styling:** All styles use CSS variables for easy theming.
+- **Animations:** Page transitions and component animations are built-in.
+
+## Deployment
+
+To build for production:
+```sh
+npm run build
+```
+The output will be in the `build/` directory, ready to deploy to any static hosting service.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Credits
+
+- [TMDB API](https://www.themoviedb.org/documentation/api)
+- [React](https://react.dev/)
+- [Create React App](https://create-react-app.dev/)
+- [Poppins Google Font](https://fonts.google.com/specimen/Poppins)
+
+---
+
+Enjoy discovering movies with TMDB Movie Search App!
 
 ## Learn More
 
